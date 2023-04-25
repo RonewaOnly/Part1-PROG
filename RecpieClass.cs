@@ -34,26 +34,34 @@ namespace Part1__Final_ST10157545
 					"5. Clear ");
 				options = (Console.ReadLine());
 
-				switch (options)
+				try
 				{
-					case "1":
-						Option1();
-						break;
-					case "2":
-						Option2();
-						break;
-					case "3":
-						Option3();
-						break;
-					case "4":
-						Option4();
-						break;
-					case "5":
-						Clear();
-						break;
+					switch (options)
+					{
+						case "1":
+							Option1();
+							break;
+						case "2":
+							Option2();
+							break;
+						case "3":
+							Option3();
+							break;
+						case "4":
+							Option4();
+							break;
+						case "5":
+							Clear();
+							break;
 
 
+					}
 				}
+				catch (FormatException exm)
+				{
+					Console.WriteLine(exm.Message);
+				}
+				
 			}
 		}
 
@@ -74,8 +82,15 @@ namespace Part1__Final_ST10157545
 				Console.WriteLine($"Ingredient: {counter++} ");
 				Console.WriteLine("Enter ingredient name: ");
 				ingredientsName[i] = Console.ReadLine();
-				Console.WriteLine("Enter the ingredient qualtity: ");
-				ingredientQualtity[i] = Convert.ToInt32(Console.ReadLine());
+				try {
+					Console.WriteLine("Enter the ingredient qualtity: ");
+					ingredientQualtity[i] = Convert.ToInt32(Console.ReadLine());
+
+				} catch (FormatException mess)
+				{
+					Console.WriteLine(mess.Message);	
+				}
+				
 				Console.WriteLine("Enter the unit of measurement: ");
 				unitOfMeasurement[i] = Console.ReadLine();
 				Console.Beep();
@@ -259,7 +274,7 @@ namespace Part1__Final_ST10157545
 			switch (options)
 			{
 				case "yes":
-					for (int i = 0; i < maxLength; i++)
+					/*for (int i = 0; i < maxLength; i++)
 					{
 						ingredientsName[i] = "";
 						ingredientQualtity[i] = 0;
@@ -273,7 +288,11 @@ namespace Part1__Final_ST10157545
 						obj.IngredientsName[i] = "";
 						obj.IngredientQualtity[i] = ingredientQualtity[i];
 						obj.UnitOfMeasurement[i] = "";
-					}
+					}*/
+					Array.Clear(ingredientsName,0, numOfIngredints);
+					Array.Clear(ingredientQualtity, 0, numOfIngredints);
+					Array.Clear(unitOfMeasurement, 0, numOfIngredints);
+					Array.Clear(obj.IngredientSteps,0,numOfSteps);
 					obj.Details();
 					obj.ModifiedDouble();
 					obj.ModifiedHalfed();
