@@ -31,7 +31,8 @@ namespace Part1__Final_ST10157545
 					"2. Display the whole recipe...\n" +
 					"3. Scale the Unit of measurement....\n" +
 					"4. Restart \n" +
-					"5. Clear ");
+					"5. Clear \n" +
+					"6. Press 6 to exit");
 				options = (Console.ReadLine());
 
 				try
@@ -53,7 +54,9 @@ namespace Part1__Final_ST10157545
 						case "5":
 							Clear();
 							break;
-
+						case "6":
+							Environment.Exit(0);
+							break;
 
 					}
 				}
